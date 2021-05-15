@@ -8,16 +8,8 @@ const makeTransaction = (transaction) => {
     const delay = randomIntegerFromInterval(200, 500);
     const canProcess = Math.random() > 0.3;
     
-   
-
     return new Promise((resolve, rejecte) => {
-        setTimeout(() => {
-            if (canProcess) {
-                resolve(transaction.id, delay);
-            } else {
-                rejecte(transaction.id);
-            };
-        }, delay);
+        setTimeout(() => {canProcess ? resolve(transaction.id, delay) : rejecte(transaction.id)}, delay);
     });
 };
 
