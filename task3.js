@@ -5,10 +5,13 @@ const randomIntegerFromInterval = (min, max) => {
 const makeTransaction = (transaction) => {
     const delay = randomIntegerFromInterval(200, 500);
     const canProcess = Math.random() > 0.3;
-    transaction.time = delay
+  
+    const transactionCopy = { ...transaction };
+    transactionCopy.time = delay
+  
     
     return new Promise((resolve, rejecte) => {
-      setTimeout(() => { canProcess ? resolve(transaction) : rejecte(transaction)}, delay);
+      setTimeout(() => { canProcess ? resolve(transactionCopy) : rejecte(transactionCopy)}, delay);
     });
 };
 
